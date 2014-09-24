@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aprendendo o básico</title>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+</head>
+<body>
+
+    <form action="" class="pure-form pure-form-stacked">
+
+        <label for="valor1">Valor 1</label>
+        <input type="number" id="valor1" name="valor1">
+
+        <label for="valor2">Valor 2</label>
+        <input type="number" id="valor2" name="valor2">
+
+        <button type="button" id="calcular" class="pure-button pure-button-primary">Calcular</button>
+
+        <label for="resultado">Resultado</label>
+        <input type="number" id="resultado" name="resultado" disabled>
+
+    </form>
+
+    <ul id="sorteio"></ul>
+
+    <script>
+
+        function converteParaNumer (valor) {
+            return parseInt(valor);
+        }
+
+        function somar (valor1, valor2) {
+            return converteParaNumer(valor1) + converteParaNumer(valor2);
+        }
+
+        function range (resultado) {
+            for (var i = 0; i < resultado; i++) {
+                document.getElementById('sorteio').innerHTML += '<li>' + i + '</li>';
+            }
+        }
+
+        document.getElementById('calcular').onclick = function () {
+            var valor1 = document.getElementById('valor1').value;
+            var valor2 = document.getElementById('valor2').value;
+
+            var resultado = somar(valor1, valor2);
+
+            range(resultado);
+
+            document.getElementById('resultado').value = resultado;
+        };
+
+    </script>
+
+</body>
+</html>
